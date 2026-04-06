@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Pulse - Live Intelligence Dashboard</title>
+    <!-- Caching & Cache Busting -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="stylesheet" href="styles.css?v=v1a2b3">
+    <!-- Lucide Icons for modern UI -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i data-lucide="activity" class="icon-primary"></i>
+                <span>Enterprise <span class="text-highlight">Pulse</span></span>
+            </div>
+            <div class="status-bar">
+                <div class="status-item">
+                    <span class="status-dot online"></span>
+                    <span>Systems Online</span>
+                </div>
+                <div class="time-container">
+                    <span id="current-time">12:00:00 PM</span>
+                    <span id="current-date" class="date-text">Monday, April 6, 2026</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Dashboard Grid -->
+        <main class="dashboard-grid">
+            <!-- Left Column: Operations & Metrics -->
+            <section class="column col-left">
+                <div class="card metric-card">
+                    <div class="card-header">
+                        <i data-lucide="trending-up"></i>
+                        <h3>Global Sales Velocity</h3>
+                    </div>
+                    <div class="metric-value">
+                        <span class="currency">$</span><span id="sales-value">1,248,500</span>
+                    </div>
+                    <div class="metric-footer">
+                        <span class="trend positive"><i data-lucide="arrow-up-right"></i> +12.5%</span>
+                        <span class="footer-label">vs. last 24h</span>
+                    </div>
+                    <div class="sparkline-container">
+                        <canvas id="sales-sparkline"></canvas>
+                    </div>
+                </div>
+
+                <div class="card metric-card">
+                    <div class="card-header">
+                        <i data-lucide="users"></i>
+                        <h3>Active Users</h3>
+                    </div>
+                    <div class="metric-value" id="active-users">
+                        14,292
+                    </div>
+                    <div class="metric-footer">
+                        <span class="trend positive"><i data-lucide="arrow-up-right"></i> +4.2%</span>
+                        <span class="footer-label">Live now</span>
+                    </div>
+                </div>
+
+                <div class="card inventory-card">
+                    <div class="card-header">
+                        <i data-lucide="package"></i>
+                        <h3>Fulfillment Status</h3>
+                    </div>
+                    <div class="progress-section">
+                        <div class="progress-item">
+                            <div class="progress-label">
+                                <span>Processing</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 85%;"></div></div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-label">
+                                <span>In Transit</span>
+                                <span>62%</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 62%;"></div></div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-label">
+                                <span>Delivered</span>
+                                <span>94%</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 94%;"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Middle Column: Main Visualization & Map -->
+            <section class="column col-middle">
+                <div class="card map-card">
+                    <div class="card-header">
+                        <i data-lucide="globe"></i>
+                        <h3>Global Operations Map</h3>
+                    </div>
+                    <div class="map-placeholder">
+                        <!-- Simulated map nodes will be added by JS -->
+                        <div id="map-container"></div>
+                        <div class="map-overlay">
+                            <div class="region-stat">
+                                <span class="region-name">North America</span>
+                                <span class="region-value">8.4k items/hr</span>
+                            </div>
+                            <div class="region-stat">
+                                <span class="region-name">Europe</span>
+                                <span class="region-value">5.2k items/hr</span>
+                            </div>
+                            <div class="region-stat">
+                                <span class="region-name">Asia Pacific</span>
+                                <span class="region-value">12.1k items/hr</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card insights-card">
+                    <div class="card-header">
+                        <i data-lucide="zap"></i>
+                        <h3>AI Predictive Insights</h3>
+                    </div>
+                    <div class="insight-list">
+                        <div class="insight-item">
+                            <div class="insight-icon info"><i data-lucide="info"></i></div>
+                            <div class="insight-content">
+                                <p>Supply chain anomaly detected in East Asia. Inventory buffer recommended for Q3.</p>
+                            </div>
+                        </div>
+                        <div class="insight-item">
+                            <div class="insight-icon alert"><i data-lucide="alert-triangle"></i></div>
+                            <div class="insight-content">
+                                <p>Logistics delay predicted in Port of Rotterdam due to weather. Eta +14h.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Column: Live Feed & Social -->
+            <section class="column col-right">
+                <div class="card feed-card">
+                    <div class="card-header">
+                        <i data-lucide="message-square"></i>
+                        <h3>Internal Team Pulse</h3>
+                    </div>
+                    <div class="feed-container" id="team-feed">
+                        <!-- Feed items generated by JS -->
+                    </div>
+                </div>
+
+                <div class="card news-card">
+                    <div class="card-header">
+                        <i data-lucide="rss"></i>
+                        <h3>Industry Headlines</h3>
+                    </div>
+                    <div class="news-ticker-container">
+                        <div class="news-ticker" id="news-ticker">
+                            <!-- News items generated by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card qr-card">
+                    <div class="qr-content">
+                        <div class="qr-code">
+                            <!-- Simulated QR Code -->
+                            <div class="qr-box">
+                                <div class="qr-pattern"></div>
+                                <i data-lucide="smartphone" class="qr-icon"></i>
+                            </div>
+                        </div>
+                        <div class="qr-text">
+                            <h4>Scan for Mobile Handoff</h4>
+                            <p>Take this dashboard with you and manage operations on the go.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer Ticker -->
+        <footer class="footer-ticker">
+            <div class="ticker-wrapper">
+                <div class="ticker-content" id="bottom-ticker">
+                    <span>STOCK INDEX: EPSE +1.24% ▲</span>
+                    <span>MARKET CAP: $4.2B</span>
+                    <span>Q2 TARGET: 88% REACHED</span>
+                    <span>EMPLOYEE SATISFACTION: 4.8/5</span>
+                    <span>CARBON OFFSET: 1,240 TONS</span>
+                    <!-- Duplicate for seamless loop -->
+                    <span>STOCK INDEX: EPSE +1.24% ▲</span>
+                    <span>MARKET CAP: $4.2B</span>
+                    <span>Q2 TARGET: 88% REACHED</span>
+                    <span>EMPLOYEE SATISFACTION: 4.8/5</span>
+                    <span>CARBON OFFSET: 1,240 TONS</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js?v=v1a2b3"></script>
+</body>
+</html>
