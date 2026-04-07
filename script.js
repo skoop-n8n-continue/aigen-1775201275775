@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const drawSparkline = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.beginPath();
-            ctx.strokeStyle = '#c0392b';
+            ctx.strokeStyle = '#f1c40f';
             ctx.lineWidth = 2;
             ctx.lineJoin = 'round';
 
@@ -158,8 +158,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Add gradient fill
             const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-            gradient.addColorStop(0, 'rgba(192, 57, 43, 0.2)');
-            gradient.addColorStop(1, 'rgba(192, 57, 43, 0)');
+            gradient.addColorStop(0, 'rgba(241, 196, 15, 0.2)');
+            gradient.addColorStop(1, 'rgba(241, 196, 15, 0)');
 
             ctx.lineTo((points.length - 1) * step, canvas.height);
             ctx.lineTo(0, canvas.height);
